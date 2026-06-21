@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo interactiva de una secretaria virtual con inteligencia artificial.">
+  <title>Alba IA | Demo de secretaria virtual</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Inicio">
+      <span class="brand-mark">A</span>
+      <span>Alba <strong>IA</strong></span>
+    </a>
+    <div class="top-actions">
+      <span class="live-pill"><i></i> Demo en vivo</span>
+      <button class="icon-button" id="resetButton" title="Reiniciar demo" aria-label="Reiniciar demo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8.1 8.1 0 1 0-2.4 5.8M20 4v7h-7"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <div>
+        <span class="eyebrow">Tu negocio, siempre disponible</span>
+        <h1>Conoce a la secretaria que<br><em>nunca deja un cliente esperando.</em></h1>
+      </div>
+      <p>Alba atiende, informa y agenda citas las 24 horas. Prueba una conversación real y descubre lo que puede hacer por tu negocio.</p>
+    </section>
+
+    <section class="demo-grid">
+      <article class="chat-card">
+        <header class="chat-header">
+          <div class="agent-avatar"><span>AI</span><i></i></div>
+          <div class="agent-copy">
+            <h2>Alba</h2>
+            <p>Secretaria virtual de Clínica Lumina</p>
+          </div>
+          <span class="online"><i></i> En línea</span>
+        </header>
+
+        <div class="chat-body" id="chatBody" aria-live="polite"></div>
+
+        <div class="quick-actions" id="quickActions">
+          <button data-message="Quiero agendar una cita">Agendar cita</button>
+          <button data-message="¿Qué servicios ofrecen?">Ver servicios</button>
+          <button data-message="¿Cuál es el horario?">Consultar horario</button>
+        </div>
+
+        <form class="composer" id="chatForm">
+          <input id="messageInput" type="text" autocomplete="off" placeholder="Escribe tu mensaje..." aria-label="Mensaje">
+          <button type="submit" aria-label="Enviar mensaje">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </button>
+        </form>
+        <footer class="chat-footer"><span>✦</span> Respuestas generadas por inteligencia artificial</footer>
+      </article>
+
+      <aside class="dashboard">
+        <div class="dashboard-heading">
+          <div>
+            <span class="eyebrow small">Impacto en tiempo real</span>
+            <h2>Mientras Alba conversa...</h2>
+          </div>
+          <span class="today">HOY</span>
+        </div>
+
+        <div class="stats">
+          <article class="stat-card accent">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 9h8M8 13h5"/></svg>
+            </div>
+            <p>Conversaciones</p>
+            <strong id="conversationCount">24</strong>
+            <span class="trend">↗ 18% esta semana</span>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon warm">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M8 15h3v3H8z"/></svg>
+            </div>
+            <p>Citas agendadas</p>
+            <strong id="appointmentCount">8</strong>
+            <span class="trend">↗ 3 más que ayer</span>
+          </article>
+        </div>
+
+        <article class="activity-card">
+          <div class="activity-title">
+            <h3>Actividad de Alba</h3>
+            <span>En vivo</span>
+          </div>
+          <div class="activity-feed" id="activityFeed">
+            <div class="activity-item">
+              <span class="activity-dot check">✓</span>
+              <div><strong>Cita confirmada</strong><p>Valoración inicial · 10:30</p></div>
+              <time>Hace 2 min</time>
+            </div>
+            <div class="activity-item">
+              <span class="activity-dot message">↗</span>
+              <div><strong>Consulta respondida</strong><p>Información de tratamientos</p></div>
+              <time>Hace 5 min</time>
+            </div>
+            <div class="activity-item">
+              <span class="activity-dot user">+</span>
+              <div><strong>Nuevo prospecto</strong><p>Capturado desde Instagram</p></div>
+              <time>Hace 12 min</time>
+            </div>
+          </div>
+        </article>
+
+        <article class="availability-card">
+          <div class="availability-icon">24<span>/7</span></div>
+          <div><strong>Siempre activa. Siempre amable.</strong><p>Alba atiende incluso cuando tu equipo descansa.</p></div>
+        </article>
+      </aside>
+    </section>
+
+    <section class="benefits">
+      <article><span>01</span><div><strong>Responde al instante</strong><p>Sin esperas ni clientes perdidos.</p></div></article>
+      <article><span>02</span><div><strong>Agenda automáticamente</strong><p>Coordina citas sin llamadas.</p></div></article>
+      <article><span>03</span><div><strong>Se adapta a tu negocio</strong><p>Aprende tus servicios y tu tono.</p></div></article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
