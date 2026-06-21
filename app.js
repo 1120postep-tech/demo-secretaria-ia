@@ -126,6 +126,11 @@ function replyFor(message) {
     return '¡Hola! Qué gusto atenderte. Soy Alba, la secretaria virtual de Clínica Lumina. Puedo ayudarte con servicios, horarios o agendar una cita.';
   }
   if (/gracias/.test(text)) return '¡Con mucho gusto! Estoy aquí cuando me necesites.';
+  if (/paquete|plan|basico|estandar|premium/.test(text)) {
+    addActivity('user', 'Interés comercial', 'Solicitud de información de un plan');
+    setActions([['Agendar demostración', 'Quiero agendar una demostración'], ['Comparar planes', 'Quiero comparar los planes']]);
+    return '¡Excelente elección! Un especialista puede revisar tu operación y confirmar qué integraciones necesita tu negocio. La demostración y el diagnóstico inicial no tienen costo.';
+  }
 
   addActivity('message', 'Consulta atendida', 'Respuesta personalizada por IA');
   setActions([['Agendar cita', 'Quiero agendar una cita'], ['Ver servicios', '¿Qué servicios ofrecen?'], ['Hablar con persona', 'Necesito hablar con una persona']]);
@@ -167,6 +172,12 @@ document.querySelector('#resetButton').addEventListener('click', () => {
   toast.textContent = 'Demo reiniciada';
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 1800);
+});
+document.querySelector('.pricing-grid').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-plan]');
+  if (!button) return;
+  document.querySelector('.chat-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => processMessage(`Me interesa el plan ${button.dataset.plan}`), 450);
 });
 
 resetDemo();
